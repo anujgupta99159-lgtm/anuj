@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Valentine ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg,#ff758c,#ff7eb3,#ff4b5c,#ff6a88);
+    background-size:400% 400%;
+    animation: gradientBG 8s ease infinite;
+    overflow:hidden;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:float 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh) scale(1);opacity:1;}
+    100%{transform:translateY(-10vh) scale(1.5);opacity:0;}
+}
+
+/* MAIN CONTAINER */
+.container{
+    width:85%;
+    max-width:900px;
+    min-height:500px;
+    padding:40px;
+    border-radius:30px;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,0.2);
+    border:1px solid rgba(255,255,255,0.3);
+    text-align:center;
+    color:white;
+    box-shadow:0 0 60px rgba(255,0,90,0.5);
+    position:relative;
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.countdown{
+    font-size:18px;
+    margin:15px 0;
+    font-weight:bold;
+}
+
+/* Buttons */
+button{
+    padding:12px 28px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    margin:15px;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff2e63;
+    color:white;
+    box-shadow:0 0 20px #ff2e63;
+}
+
+.no{
+    background:#444;
+    color:white;
+    position:relative;
+}
+
+.memory-btn{
+    background:white;
+    color:#ff2e63;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+/* MEMORY SECTION */
+.memory-section{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    display:none;
+    flex-direction:column;
+    padding:40px;
+    border-radius:30px;
+    overflow-y:auto;
+}
+
+.memory-gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:25px;
+    margin-top:30px;
+}
+
+.memory-gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.4s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
+
+.memory-gallery img:hover{
+    transform:scale(1.08);
+}
+
+.back-btn{
+    margin-top:30px;
+    background:#ff2e63;
+    color:white;
+}
+
+/* LOVE POPUP */
+.love-popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.love-content{
+    background:linear-gradient(135deg,#ff2e63,#ff6a88);
+    padding:40px;
+    border-radius:25px;
+    width:80%;
+    max-width:500px;
+    text-align:center;
+    color:white;
+    box-shadow:0 0 40px rgba(255,0,90,0.8);
+}
+
+.love-content p{
+    margin-top:15px;
+    line-height:1.6;
+    font-size:18px;
+}
+
+.love-content button{
+    margin-top:20px;
+    background:white;
+    color:#ff2e63;
+    font-weight:bold;
+}
+
+.music-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:white;
+    color:#ff2e63;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Will You Be My Valentine? 💖</h1>
+
+    <div class="countdown" id="countdown"></div>
+
+    <button class="yes" onclick="sayYes()">Yes 💖</button>
+    <button class="no" onmouseover="moveButton(this)">No 💔</button>
+    <button class="memory-btn" onclick="openMemory()">Our Memories 💕</button>
+
+    <!-- MEMORY SECTION -->
+    <div class="memory-section" id="memorySection">
+        <h2>Our Beautiful Memories 💕</h2>
+
+        <div class="memory-gallery">
+            <img src="memory1.jpg">
+            <img src="memory2.jpg">
+            <img src="memory3.jpg">
+            <img src="memory4.jpg">
+            <img src="memory5.jpg">
+            <img src="memory6.jpg">
+        </div>
+
+        <button class="back-btn" onclick="closeMemory()">Back 💖</button>
+    </div>
+
+</div>
+
+<!-- LOVE POPUP -->
+<div class="love-popup" id="lovePopup">
+    <div class="love-content">
+        <h2>💖 My Forever Love 💖</h2>
+        <p>
+            From the moment you came into my life,
+            everything became more beautiful.
+            Your smile is my favorite place,
+            your happiness is my biggest dream.
+            I promise to love you,
+            respect you and stand beside you forever.
+            You are my today and all of my tomorrows. 💖
+        </p>
+        <button onclick="closePopup()">Close 💕</button>
+    </div>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="love-song.mp3" type="audio/mp3">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+
+<script>
+
+
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = valentineDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `Valentine Countdown 💖 ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+
+// Yes Button
+function sayYes(){
+    document.getElementById("lovePopup").style.display="flex";
+    document.getElementById("bgMusic").play();
+}
+
+// Close Popup
+function closePopup(){
+    document.getElementById("lovePopup").style.display="none";
+}
+
+// Move No Button
+function moveButton(btn){
+    btn.style.position="absolute";
+    btn.style.top=Math.random()*80+"%";
+    btn.style.left=Math.random()*80+"%";
+}
+
+// Memory Section
+function openMemory(){
+    document.getElementById("memorySection").style.display="flex";
+}
+
+function closeMemory(){
+    document.getElementById("memorySection").style.display="none";
+}
+
+// Music Toggle
+function toggleMusic(){
+    const music = document.getElementById("bgMusic");
+    if(music.paused){
+        music.play();
+    } else{
+        music.pause();
+    }
+}
+
+// Floating Hearts Generator
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},6000);
+},500);
+
+</script>
+
+</body>
+</html>
